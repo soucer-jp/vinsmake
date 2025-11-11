@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- O título que aparece na aba do navegador -->
+    <title>Vinsmake - Agência de Posicionamento Digital</title>
+    
+    <!-- Carrega o Tailwind CSS para estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Carrega o Alpine.js (Para as mecânicas de texto dinâmico) -->
+    <!-- CORREÇÃO: Adicionado o atributo 'defer' que estava faltando -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Carrega a fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Define a fonte Inter como padrão */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #D1D5DB; /* Equivalente a text-gray-300 */
+        }
+        
+        /* Efeito de transição para o texto dinâmico (mecânica) */
+        [x-cloak] { display: none !important; }
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.5s ease;
+        }
+        .fade-enter-from, .fade-leave-to {
+            opacity: 0;
+        }
+    </style>
+</head>
+<!-- APRIMORAMENTO: Adicionado id="inicio" para os links da logo -->
+<body id="inicio" class="bg-black antialiased">
+
+    <!-- ===== CABEÇALHO (HEADER) ===== -->
+    <!-- ALTERADO: Barra preta sólida, sem borda inferior (border-b) -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-black">
+        <nav class="max-w-7xl mx-auto px-6 py-5 flex justify-center items-center">
+            
+            <!-- APRIMORAMENTO: Link da logo agora aponta para #inicio -->
+            <a href="#inicio" class="flex items-center focus:outline-none focus:ring-0" aria-label="Vinsmake Homepage">
+                <span class="text-3xl font-bold text-white tracking-tight">
+                    Vins<span class="font-light text-blue-400">make</span>
+                </span>
+            </a>
+            
+        </nav>
+    </header>
+
+    <main>
+        <!-- ===== SEÇÃO PRINCIPAL (HERO) ===== -->
+        <section id="inicio" class="min-h-screen h-full flex items-center justify-center text-center px-6 pt-24 pb-12 relative">
+            
+            <!-- Dados do Alpine.js para a mecânica de texto -->
+            <div 
+                class="flex flex-col items-center max-w-4xl mx-auto"
+                x-data="{
+                    words: ['visibilidade', 'resultados', 'crescimento'],
+                    currentWord: 0,
+                    word: 'visibilidade',
+                    updateWord() {
+                        this.currentWord = (this.currentWord + 1) % this.words.length;
+                        this.word = this.words[this.currentWord];
+                    }
+                }"
+                x-init="setInterval(() => updateWord(), 3000)"
+            >
+                <!-- Título principal com a palavra dinâmica -->
+                <!-- APRIMORAMENTO MOBILE: 'text-5xl' mudou para 'text-4xl' como base, 'sm:text-7xl' para 'sm:text-6xl' -->
+                <h1 class="text-4xl sm:text-6xl md:text-8xl font-extrabold text-white leading-tight tracking-tighter">
+                    Transformamos cliques em
+                    <!-- A mecânica de troca de palavras acontece aqui -->
+                    <!-- CORREÇÃO: Adicionado 'block' para forçar a quebra de linha e estabilizar a animação no mobile -->
+                    <span class="relative block h-[1.2em] overflow-hidden">
+                        <span
+                            x-text="word"
+                            class="text-blue-400 transition-all duration-500 ease-in-out"
+                            :key="word"
+                            x-transition:enter="fade-enter-active"
+                            x-transition:enter-start="fade-enter-from"
+                            x-transition:leave="fade-leave-active"
+                            x-transition:leave-end="fade-leave-to"
+                        ></span>
+                    </span>
+                </h1>
+                
+                <!-- APRIMORAMENTO MOBILE: 'text-lg' mudou para 'text-base' como base -->
+                <p class="mt-6 text-base sm:text-lg md:text-xl max-w-2xl text-gray-400">
+                    Somos uma agência de desenvolvimento focada em uma única coisa:
+                    posicionar o seu site no topo. Design moderno, SEO estratégico e performance máxima.
+                </p>
+                
+                <a href="https://wa.me/5511999998888" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="mt-10 inline-flex justify-center bg-blue-400 text-black font-semibold py-3 px-8 rounded-full text-base transition-colors duration-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                    <!-- ÍCONE REMOVIDO -->
+                    Entrar em Contato
+                </a>
+            </div>
+            
+            <!-- REMOVIDO: Mecânica de Rolar para Baixo (Scroll Down) -->
+            
+        </section>
+
+        <!-- ===== SEÇÃO DE SERVIÇOS (Enxuta) ===== -->
+        <section id="servicos" class="py-24 sm:py-32">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="max-w-2xl mx-auto lg:mx-0">
+                    <h2 class="text-base font-semibold leading-7 text-blue-400">O que fazemos</h2>
+                    <!-- APRIMORAMENTO MOBILE: 'text-4xl' mudou para 'text-3xl' como base -->
+                    <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-5xl">Design que Posiciona</p>
+                    <p class="mt-6 text-lg leading-8 text-gray-400">
+                        Não criamos apenas sites. Criamos máquinas de aquisição de clientes.
+                        Cada linha de código e cada pixel são pensados para performance e posicionamento digital.
+                    </p>
+                </div>
+                
+                <!-- Grade de Serviços Minimalista -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="group p-8 rounded-xl transition-all duration-300 border border-gray-800 hover:scale-[1.03] hover:border-blue-400 hover:bg-gray-900/50">
+                        <h3 class="text-xl font-semibold text-white">Websites Ultra-Rápidos</h3>
+                        <p class="mt-3 text-gray-400">
+                            Performance não é opcional. Construímos sites leves que carregam instantaneamente,
+                            agradam seus usuários e dominam o Google.
+                        </p>
+                    </div>
+                    
+                    <div class="group p-8 rounded-xl transition-all duration-300 border border-gray-800 hover:scale-[1.03] hover:border-blue-400 hover:bg-gray-900/50">
+                        <h3 class="text-xl font-semibold text-white">SEO Estratégico</h3>
+                        <p class="mt-3 text-gray-400">
+                            Seu site nasce otimizado. Da estrutura técnica ao conteúdo,
+                            garantimos que você seja encontrado por quem realmente importa.
+                        </p>
+                    </div>
+                    
+                    <div class="group p-8 rounded-xl transition-all duration-300 border border-gray-800 hover:scale-[1.03] hover:border-blue-400 hover:bg-gray-900/50">
+                        <h3 class="text-xl font-semibold text-white">Design Focado em Conversão</h3>
+                        <p class="mt-3 text-gray-400">
+                            Design limpo, moderno e direto ao ponto.
+                            Focamos na jornada do usuário para transformar visitantes em clientes.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SEÇÃO DE CONTATO (Enxuta) ===== -->
+        <section id="contato" class="py-24 sm:py-32 bg-gray-900/50 mx-4 lg:mx-auto max-w-7xl rounded-2xl">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                 <!-- APRIMORAMENTO MOBILE: 'text-4xl' mudou para 'text-3xl' como base -->
+                 <h2 class="text-3xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+                    Pronto para dominar seu nicho?
+                </h2>
+                <p class="mt-6 text-lg leading-8 text-gray-300">
+                    Chega de sites invisíveis. Vamos construir algo que traga resultados.
+                    Envie-nos uma mensagem e descubra como podemos posicionar sua marca.
+                </p> <!-- CORREÇÃO: Erro de digitação </D> corrigido para </p> -->
+                <div class="mt-10">
+                    <a href="https://wa.me/5511999998888" 
+                       target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="inline-flex justify-center bg-blue-400 text-black font-semibold py-3 px-8 rounded-full text-base transition-colors duration-300 hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50">
+                        <!-- ÍCONE REMOVIDO -->
+                        Entrar em Contato
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== RODAPÉ (FOOTER) ===== -->
+    <footer class="py-12 mt-24"> <!-- Adicionado margin-top para separar do card de contato -->
+        <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+             <!-- APRIMORAMENTO: Link da logo agora aponta para #inicio -->
+             <a href="#inicio" class="flex items-center focus:outline-none focus:ring-0" aria-label="Vinsmake Homepage">
+                <span class="text-2xl font-bold text-white tracking-tight">
+                    Vins<span class="font-light text-blue-400">make</span>
+                </span>
+            </a>
+            <p class="text-sm text-gray-500">
+                © 2025 Vinsmake. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
